@@ -1,0 +1,15 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}" />
+
+<h1>Open chatrooms</h1>
+
+{% if latest_chatrooms %}
+    <ul id="chatroom_list">
+    {% for chatroom in latest_chatrooms %}
+        <li><a href="{% url 'chat:display_chatroom' chatroom.id %}">{{ chatroom.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No chatrooms are available.</p>
+{% endif %}

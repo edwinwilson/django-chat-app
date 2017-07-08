@@ -1,0 +1,27 @@
+{% load static %}
+{% load staticfiles %}
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'chat/scripts.js' %}"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}" />
+
+<h1>{{ chatroom.name }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<input type="hidden" id="chatroom_id" value="{{ chatroom.id }}"/>
+
+<h2>Messages</h2>
+<div id="message_area">
+    <ul id="inner_messages">
+        {% for message in messages %}
+        ({{ message.date_sent }})-{{ message.sender.name }} : {{ message.content }}<br>
+        {% endfor %}
+    </ul>
+</div>
+
+<form action="javascript:postMessage()" method="post">
+    {% csrf_token %}
+    <input type="text" name="message" id="send_message">
+    <input type="submit" value="Send" style="position: absolute; left: -9999px">
+</form>

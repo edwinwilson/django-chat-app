@@ -1,0 +1,11 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chat/style.css' %}" />
+
+<h1>Create a user to chat !</h1>
+
+<form action="{% url 'chat:create_user'%}" method="post">
+    {% csrf_token %}
+    <input type="text" name="user_name">
+    <input type="submit" value="Send">
+</form>
