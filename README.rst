@@ -9,14 +9,14 @@ Chat is a simple Django app to chat.
 Quick start
 -----------
 
-1. Add "chat" to your INSTALLED_APPS setting like this::
+1. Add "chat" to your INSTALLED_APPS setting ::
 
     INSTALLED_APPS = [
         ...
         'chat',
     ]
 
-2. Include the chat URLconf in your project urls.py like this::
+2. Include the chat URLconf in your project urls.py ::
 
     url(r'^chat/', include('chat.urls')),
 
